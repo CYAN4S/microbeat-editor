@@ -18,7 +18,12 @@ function DescEditor() {
   const [addBpms, setAddBpms] = useState(false);
   const [bpms, setBpms] = useState<Bpm[]>([]);
 
-  const handleSave = () => {};
+  const handleSave = () => {
+    let x = document.createElement('a');
+    x.download = "data.json";
+    x.href = window.URL.createObjectURL(new Blob([getJson()], {type: 'text/plain'}))
+    x.click();
+  };
 
   const handleInputChange = ({
     target,
@@ -51,6 +56,13 @@ function DescEditor() {
     x.splice(i, 1);
     setBpms(x);
   }
+
+  const getJson = () => 
+    JSON.stringify(
+      addBpms ? { ...state, bpms } : state,
+      (k, v) => (v == "" && typeof(v) == "string" ? undefined : v),
+      2
+    )
 
   return (
     <div className="DescEditor">
@@ -139,11 +151,7 @@ function DescEditor() {
       <input type="button" value="Save" onClick={handleSave} />
 
       <p className="result">
-        {JSON.stringify(
-          addBpms ? { ...state, bpms } : state,
-          (k, v) => (v == "" && typeof(v) == "string" ? undefined : v),
-          4
-        )}
+        {getJson()}
       </p>
     </div>
   );
