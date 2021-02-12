@@ -1,4 +1,19 @@
-p.result {
-    position: fixed;
-    bottom: 0px;
+.form-grid {
+    display: grid;
+    grid-template-columns: 160px auto;
+    column-gap: 12px;
+    row-gap: 4px;
+}
+
+.form-grid label {
+    width: 160px;
+    text-align: right;
+}
+
+.DescEditor {
+    max-width: 600px;
+}
+
+.editors {
+    display: flex;
 }

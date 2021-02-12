@@ -28,8 +28,8 @@ function BpmEditor(props: { bpms: Bpm[]; onAddNew: (value: Bpm) => void; onDelet
     <div>
       {bpms.map((bpm, i) => (
         <div key={`${i}/${bpm}`}>
-          {bpm.beat} / {bpm.bpm}
-          <input type="button" value={`${i} / -`} onClick={() => onDelete(i)}/>
+          ({i}) {bpm.beat} / {bpm.bpm} BPM
+          <input type="button" value="삭제" onClick={() => onDelete(i)}/>
         </div>
       ))}
       <input
