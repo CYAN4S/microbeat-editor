@@ -17,3 +17,20 @@
 .editors {
     display: flex;
 }
+
+.pattern-editor {
+    width: 400px;
+    height: 60vh;
+    background-color: lightblue;
+}
+
+.pattern-scrollview {
+    height: 100%;
+    overflow: auto;
+    display: flex;
+}
+
+.pattern-notes {
+    height: 1000px;
+    flex: auto;
+}

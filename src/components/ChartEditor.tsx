@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Note, LongNote } from "./Note";
 import Radio from "./Radio";
+import NoteListEditor from "./NoteListEditor";
+import LongNoteListEditor from "./LongNoteListEditor";
 import PatternEditor from "./PatternEditor";
 
 function ChartEditor() {
@@ -12,7 +14,7 @@ function ChartEditor() {
     setDetail({ ...detail, [target.name]: +target.value });
   };
 
-  const diffName = ["ORG", "SNT", "ADV", "HYP", "EXC"]
+  const diffName = ["ORG", "SNT", "ADV", "HYP", "EXC"];
 
   const handleNumberChange = ({
     target,
@@ -24,12 +26,34 @@ function ChartEditor() {
 
   const handleSave = () => {
     let x = document.createElement("a");
-    x.download = `${detail.line}k${diffName[detail.diff].toLowerCase()}.mcbchart`;
+    x.download = `${detail.line}k${diffName[
+      detail.diff
+    ].toLowerCase()}.mcbchart`;
     x.href = window.URL.createObjectURL(
       new Blob([getJson()], { type: "text/plain" })
     );
     x.click();
   };
+
+  const handleAddNewNote = (value: Note) => {
+    setNotes([...notes, value].sort((a, b) => a.beat - b.beat))
+  }
+
+  const handleDeleteNote = (i: number) => {
+    let x = [...notes];
+    x.splice(i, 1);
+    setNotes(x);
+  }
+
+  const handleAddNewLongNote = (value: LongNote) => {
+    setLongNotes([...longNotes, value].sort((a, b) => a.beat - b.beat))
+  }
+
+  const handleDeleteLongNote = (i: number) => {
+    let x = [...longNotes];
+    x.splice(i, 1);
+    setLongNotes(x);
+  }
 
   const lineRadioEnv = {
     name: "line",
@@ -44,13 +68,14 @@ function ChartEditor() {
   };
 
   const getJson = () => {
-    return JSON.stringify({...detail, notes, longNotes}, null, 4)
-  }
+    return JSON.stringify({ ...detail, notes, longNotes }, null, 4);
+  };
 
   return (
     <div>
       <h2>ChartEditor</h2>
       <form>
+        <h3>기본 사항</h3>
         <div className="form-grid">
           <label>버튼 수</label>
           <div>
@@ -89,6 +114,11 @@ function ChartEditor() {
           </div>
         </div>
       </form>
+      <h3>노트 정보 수정</h3>
+      <NoteListEditor notes={notes} onAddNew={handleAddNewNote} onDelete={handleDeleteNote}/>
+      <h3>롱노트 정보 수정</h3>
+      <LongNoteListEditor longNotes={longNotes} onAddNew={handleAddNewLongNote} onDelete={handleDeleteLongNote}/>
+      <h3>그래픽 인터페이스</h3>
       <PatternEditor />
       <h3>미리보기</h3>
 
