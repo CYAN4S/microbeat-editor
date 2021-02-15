@@ -118,8 +118,8 @@ function ChartEditor() {
       <NoteListEditor notes={notes} onAddNew={handleAddNewNote} onDelete={handleDeleteNote}/>
       <h3>롱노트 정보 수정</h3>
       <LongNoteListEditor longNotes={longNotes} onAddNew={handleAddNewLongNote} onDelete={handleDeleteLongNote}/>
-      <h3>그래픽 인터페이스</h3>
-      <PatternEditor />
+      <h3>채보 미리보기</h3>
+      <PatternEditor notes={notes} longNotes={longNotes}/>
       <h3>미리보기</h3>
 
       <pre className="result">{getJson()}</pre>

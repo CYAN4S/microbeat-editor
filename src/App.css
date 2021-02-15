@@ -25,12 +25,12 @@
 }
 
 .pattern-scrollview {
-    height: 100%;
     overflow: auto;
-    display: flex;
+    height: 100%;
+    transform: scaleY(-1);
 }
 
-.pattern-notes {
-    height: 1000px;
-    flex: auto;
+.pattern-container {
+    min-height: 100%;
+    position: relative;
 }
