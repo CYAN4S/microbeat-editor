@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Bpm from "./Bpm";
 import BpmEditor from "./BpmEditor";
 
+import Input from "../forms/TextInput";
+
 function DescEditor() {
   const [state, setState] = useState({
     name: "",
@@ -70,77 +72,68 @@ function DescEditor() {
     <div className="DescEditor">
       <h2>DescEditor</h2>
       <form>
-        <h3>필수 입력 사항</h3>
-        <div className="form-grid">
-          <label>음악 이름</label>
-          <input
-            type="text"
-            name="name"
-            value={state.name}
-            onChange={handleInputChange}
-          />
-          <label>아티스트</label>
-          <input
-            type="text"
-            name="artist"
-            value={state.artist}
-            onChange={handleInputChange}
-          />
-          <label>장르</label>
-          <input
-            type="text"
-            name="genre"
-            value={state.genre}
-            onChange={handleInputChange}
-          />
-          <label>BPM</label>
-          <input
-            type="number"
-            name="bpm"
-            value={state.bpm}
-            onChange={handleNumberChange}
-          />
-          <label>음악 파일 경로</label>
-          <input
-            type="text"
-            name="musicPath"
-            value={state.musicPath}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <h3>선택 입력 사항</h3>
-        <div className="form-grid">
-          <label>프리뷰 이미지 경로</label>
-          <input
-            type="text"
-            name="previewImgPath"
-            value={state.previewImgPath}
-            onChange={handleInputChange}
-          />
-          <label>작은 이미지 경로</label>
-          <input
-            type="text"
-            name="smallImgPath"
-            value={state.smallImgPath}
-            onChange={handleInputChange}
-          />
-          <label>아이캐치 이미지 경로</label>
-          <input
-            type="text"
-            name="imgPath"
-            value={state.imgPath}
-            onChange={handleInputChange}
-          />
-          <label>뮤직비디오 경로</label>
-          <input
-            type="text"
-            name="mvPath"
-            value={state.mvPath}
-            onChange={handleInputChange}
-          />
-        </div>
-
+        <h3>기본 곡 정보</h3>
+        <Input
+          label="음악 이름"
+          name="name"
+          value={state.name}
+          onChange={handleInputChange}
+          required={true}
+        />
+        <Input
+          label="아티스트"
+          name="artist"
+          value={state.artist}
+          onChange={handleInputChange}
+          required={true}
+        />
+        <Input
+          label="장르"
+          name="genre"
+          value={state.name}
+          onChange={handleInputChange}
+          required={true}
+        />
+        <Input
+          label="기준 BPM"
+          name="bpm"
+          value={state.bpm}
+          onChange={handleNumberChange}
+          type="number"
+          required={true}
+        />
+        <h3>파일 경로</h3>
+        <Input
+          label="음악 파일 경로"
+          name="musicPath"
+          value={state.musicPath}
+          onChange={handleInputChange}
+          required={true}
+        />
+        <Input
+          label="아이캐치 이미지 경로"
+          name="imgPath"
+          value={state.imgPath}
+          onChange={handleInputChange}
+        />
+        <Input
+          label="작은 이미지 경로"
+          name="smallImgPath"
+          value={state.smallImgPath}
+          onChange={handleInputChange}
+        />
+        <Input
+          label="미리보기 이미지 경로"
+          name="previewImgPath"
+          value={state.previewImgPath}
+          onChange={handleInputChange}
+        />
+        <Input
+          label="뮤직비디오 경로"
+          name="mvPath"
+          value={state.mvPath}
+          onChange={handleInputChange}
+        />
         <h3>변속 관리</h3>
         <label>변속 여부</label>
         <input
@@ -159,7 +152,6 @@ function DescEditor() {
           <></>
         )}
         <br />
-
       </form>
 
       <h3>미리보기</h3>

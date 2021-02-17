@@ -1,36 +1,49 @@
 .form-grid {
-    display: grid;
-    grid-template-columns: 160px auto;
-    column-gap: 12px;
-    row-gap: 4px;
+  display: grid;
+  grid-template-columns: 160px auto;
+  column-gap: 12px;
+  row-gap: 4px;
 }
 
 .form-grid label {
-    width: 160px;
-    text-align: right;
+  width: 160px;
+  text-align: right;
 }
 
 .DescEditor {
-    max-width: 600px;
+  max-width: 600px;
 }
 
 .editors {
-    display: flex;
+  display: flex;
 }
 
 .pattern-editor {
-    width: 400px;
-    height: 60vh;
-    background-color: lightblue;
+  width: 400px;
+  height: 60vh;
+  background-color: lightblue;
 }
 
 .pattern-scrollview {
-    overflow: auto;
-    height: 100%;
-    transform: scaleY(-1);
+  overflow: auto;
+  height: 100%;
+  transform: scaleY(-1);
 }
 
 .pattern-container {
-    min-height: 100%;
-    position: relative;
+  min-height: 100%;
+  position: relative;
+}
+
+input[type="text"],
+input[type="number"] {
+  border: none;
+  font-family: "SpoqaHanSans", sans-serif;
+  border-bottom: 2px solid lightgray;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border: none;
+  border-bottom: 2px solid lightblue;
 }
