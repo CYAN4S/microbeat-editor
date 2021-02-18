@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Bpm from "./Bpm";
 
+
 function BpmEditor(props: { bpms: Bpm[]; onAddNew: (value: Bpm) => void; onDelete:(i: number) => void }) {
   const [inputBpm, setInputBpm] = useState(new Bpm(0, 0));
   const [bpms, setBpms] = useState(props.bpms);
@@ -25,7 +26,8 @@ function BpmEditor(props: { bpms: Bpm[]; onAddNew: (value: Bpm) => void; onDelet
   }, [props.bpms]);
 
   return (
-    <div>
+    <form>
+      <h3>변속 편집</h3>
       {bpms.map((bpm, i) => (
         <div key={`${i}/${bpm}`}>
           ({i}) {bpm.beat} / {bpm.bpm} BPM
@@ -45,7 +47,7 @@ function BpmEditor(props: { bpms: Bpm[]; onAddNew: (value: Bpm) => void; onDelet
         onChange={handleInputChange}
       />
       <input type="button" value="Add new" onClick={onAddNew} />
-    </div>
+    </form>
   );
 }
 

@@ -4,6 +4,7 @@ import Radio from "./Radio";
 import NoteListEditor from "./NoteListEditor";
 import LongNoteListEditor from "./LongNoteListEditor";
 import PatternEditor from "./PatternEditor";
+import Input from "../forms/Input";
 
 function ChartEditor() {
   const [detail, setDetail] = useState({ line: 4, level: 1, diff: 0 });
@@ -36,24 +37,24 @@ function ChartEditor() {
   };
 
   const handleAddNewNote = (value: Note) => {
-    setNotes([...notes, value].sort((a, b) => a.beat - b.beat))
-  }
+    setNotes([...notes, value].sort((a, b) => a.beat - b.beat));
+  };
 
   const handleDeleteNote = (i: number) => {
     let x = [...notes];
     x.splice(i, 1);
     setNotes(x);
-  }
+  };
 
   const handleAddNewLongNote = (value: LongNote) => {
-    setLongNotes([...longNotes, value].sort((a, b) => a.beat - b.beat))
-  }
+    setLongNotes([...longNotes, value].sort((a, b) => a.beat - b.beat));
+  };
 
   const handleDeleteLongNote = (i: number) => {
     let x = [...longNotes];
     x.splice(i, 1);
     setLongNotes(x);
-  }
+  };
 
   const lineRadioEnv = {
     name: "line",
@@ -74,8 +75,16 @@ function ChartEditor() {
   return (
     <div>
       <h2>ChartEditor</h2>
+
       <form>
         <h3>기본 사항</h3>
+        <Input
+          type="number"
+          name="level"
+          value={detail.level}
+          onChange={handleNumberChange}
+          label="레벨"
+        />
         <div className="form-grid">
           <label>버튼 수</label>
           <div>
@@ -88,16 +97,6 @@ function ChartEditor() {
             8:
             <Radio env={lineRadioEnv} value={8} />
           </div>
-
-          <label>레벨</label>
-          <input
-            type="number"
-            name="level"
-            value={detail.level}
-            onChange={handleNumberChange}
-            min={1}
-            max={20}
-          />
 
           <label>난이도 종류</label>
           <div>
@@ -115,11 +114,19 @@ function ChartEditor() {
         </div>
       </form>
       <h3>노트 정보 수정</h3>
-      <NoteListEditor notes={notes} onAddNew={handleAddNewNote} onDelete={handleDeleteNote}/>
+      <NoteListEditor
+        notes={notes}
+        onAddNew={handleAddNewNote}
+        onDelete={handleDeleteNote}
+      />
       <h3>롱노트 정보 수정</h3>
-      <LongNoteListEditor longNotes={longNotes} onAddNew={handleAddNewLongNote} onDelete={handleDeleteLongNote}/>
+      <LongNoteListEditor
+        longNotes={longNotes}
+        onAddNew={handleAddNewLongNote}
+        onDelete={handleDeleteLongNote}
+      />
       <h3>채보 미리보기</h3>
-      <PatternEditor notes={notes} longNotes={longNotes}/>
+      <PatternEditor notes={notes} longNotes={longNotes} />
       <h3>미리보기</h3>
 
       <pre className="result">{getJson()}</pre>

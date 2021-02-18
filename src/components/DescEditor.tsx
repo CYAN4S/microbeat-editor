@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Bpm from "./Bpm";
 import BpmEditor from "./BpmEditor";
 
-import Input from "../forms/TextInput";
+import Input from "../forms/Input";
 
 function DescEditor() {
   const [state, setState] = useState({
@@ -70,7 +70,6 @@ function DescEditor() {
 
   return (
     <div className="DescEditor">
-      <h2>DescEditor</h2>
       <form>
         <h3>기본 곡 정보</h3>
         <Input
@@ -90,7 +89,7 @@ function DescEditor() {
         <Input
           label="장르"
           name="genre"
-          value={state.name}
+          value={state.genre}
           onChange={handleInputChange}
           required={true}
         />
@@ -135,29 +134,32 @@ function DescEditor() {
           onChange={handleInputChange}
         />
         <h3>변속 관리</h3>
-        <label>변속 여부</label>
-        <input
-          type="checkbox"
+        <Input
+          label="변속 기능"
           name="addBpms"
           checked={addBpms}
           onChange={handleAddBpmsChange}
+          type="checkbox"
+          trueLabel="활성화"
+          falseLabel="비활성화"
         />
-        {addBpms ? (
-          <BpmEditor
-            bpms={bpms}
-            onAddNew={handleAddNew}
-            onDelete={handleDelete}
-          />
-        ) : (
-          <></>
-        )}
+
         <br />
       </form>
-
-      <h3>미리보기</h3>
-
-      <pre className="result">{getJson()}</pre>
-      <input type="button" value="저장" onClick={handleSave} />
+      {addBpms ? (
+        <BpmEditor
+          bpms={bpms}
+          onAddNew={handleAddNew}
+          onDelete={handleDelete}
+        />
+      ) : (
+        <></>
+      )}
+      <form>
+        <h3>미리보기</h3>
+        <pre className="result">{getJson()}</pre>
+        <input type="button" value="저장" onClick={handleSave} />
+      </form>
     </div>
   );
 }

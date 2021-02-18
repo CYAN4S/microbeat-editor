@@ -11,7 +11,15 @@
 }
 
 .DescEditor {
-  max-width: 600px;
+  display: flex;
+  gap: 16px;
+
+}
+
+.DescEditor form {
+  min-width: 400px;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .editors {
@@ -35,15 +43,8 @@
   position: relative;
 }
 
-input[type="text"],
-input[type="number"] {
-  border: none;
-  font-family: "SpoqaHanSans", sans-serif;
-  border-bottom: 2px solid lightgray;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus {
-  border: none;
-  border-bottom: 2px solid lightblue;
+h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #26BFB3;
 }
