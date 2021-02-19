@@ -17,7 +17,6 @@ function LongNoteListEditor(props: {
 
   const onAddNew = () => {
     props.onAddNew(inputNote);
-    setInputNote(new LongNote(0, 0, 0));
   };
 
   const onDelete = (i: number) => {

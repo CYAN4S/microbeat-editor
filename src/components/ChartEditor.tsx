@@ -73,9 +73,7 @@ function ChartEditor() {
   };
 
   return (
-    <div>
-      <h2>ChartEditor</h2>
-
+    <div className="ChartEditor">
       <form>
         <h3>기본 사항</h3>
         <Input
@@ -113,24 +111,31 @@ function ChartEditor() {
           </div>
         </div>
       </form>
-      <h3>노트 정보 수정</h3>
-      <NoteListEditor
-        notes={notes}
-        onAddNew={handleAddNewNote}
-        onDelete={handleDeleteNote}
-      />
-      <h3>롱노트 정보 수정</h3>
-      <LongNoteListEditor
-        longNotes={longNotes}
-        onAddNew={handleAddNewLongNote}
-        onDelete={handleDeleteLongNote}
-      />
-      <h3>채보 미리보기</h3>
-      <PatternEditor notes={notes} longNotes={longNotes} />
-      <h3>미리보기</h3>
+      <form>
+        <h3>노트 정보 수정</h3>
+        <NoteListEditor
+          notes={notes}
+          onAddNew={handleAddNewNote}
+          onDelete={handleDeleteNote}
+        />
+        <h3>롱노트 정보 수정</h3>
+        <LongNoteListEditor
+          longNotes={longNotes}
+          onAddNew={handleAddNewLongNote}
+          onDelete={handleDeleteLongNote}
+        />
+      </form>
 
-      <pre className="result">{getJson()}</pre>
-      <input type="button" value="저장" onClick={handleSave} />
+      <form>
+        <h3>채보 미리보기</h3>
+        <PatternEditor notes={notes} longNotes={longNotes} />
+      </form>
+
+      <form>
+        <h3>미리보기</h3>
+        <pre className="result">{getJson()}</pre>
+        <input type="button" value="저장" onClick={handleSave} />
+      </form>
     </div>
   );
 }

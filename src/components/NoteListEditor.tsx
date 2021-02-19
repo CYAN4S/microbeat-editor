@@ -17,7 +17,6 @@ function NoteListEditor(props: {
 
   const onAddNew = () => {
     props.onAddNew(inputNote);
-    setInputNote(new Note(0, 0));
   };
 
   const onDelete = (i: number) => {

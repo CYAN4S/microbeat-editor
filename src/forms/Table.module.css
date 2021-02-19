@@ -1,0 +1,15 @@
+.table {
+  width: 520px;
+}
+
+.table tr {
+  height: 40px;
+}
+
+.table thead {
+  text-align: center;
+}
+
+.table tbody {
+  text-align: right;
+}

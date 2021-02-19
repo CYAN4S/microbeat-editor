@@ -10,7 +10,7 @@
   text-align: right;
 }
 
-.DescEditor {
+.DescEditor, .ChartEditor {
   display: flex;
   gap: 16px;
 
