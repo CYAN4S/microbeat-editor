@@ -1,7 +1,7 @@
 import style from "./Input.module.css";
 
 interface Spec {
-  label: string;
+  label?: string;
   required?: boolean;
   type?: string;
   value?: string | number | readonly string[];

@@ -8,8 +8,25 @@
 
 .table thead {
   text-align: center;
+  color: gray;
 }
 
 .table tbody {
   text-align: right;
+}
+
+.table th,
+td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.table tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.table tr:hover {
+  background-color: #e1fffc;
+}
+
+.table {
+  border-collapse: collapse;
 }
